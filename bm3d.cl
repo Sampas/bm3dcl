@@ -159,8 +159,8 @@ __kernel void bm3d_basic_filter(
 #if 1
     const int2 gid = {get_global_id(0) * SPLIT_SIZE_X, get_global_id(1) * SPLIT_SIZE_Y};
     if (gid.x > WIDTH-1 || gid.y > HEIGHT-1) return;
-    const size_t tot_globals = get_global_size(0) * get_global_size(1);
-    const size_t global_id = get_global_id(1) * get_global_size(0) + get_global_id(0);
+    //const size_t tot_globals = get_global_size(0) * get_global_size(1);
+    //const size_t global_id = get_global_id(1) * get_global_size(0) + get_global_id(0);
 
 #if 1
     const int2 back_limit = {max(gid.x - WINDOW_SIZE_HALF, 0),
@@ -326,8 +326,8 @@ __kernel void bm3d_wiener_filter(
 #if 1
     const int2 gid = {get_global_id(0) * SPLIT_SIZE_X, get_global_id(1) * SPLIT_SIZE_Y};
     if (gid.x > WIDTH-1 || gid.y > HEIGHT-1) return;
-    const size_t tot_globals = get_global_size(0) * get_global_size(1);
-    const size_t global_id = get_global_id(1)*get_global_size(0) + get_global_id(0);
+    //const size_t tot_globals = get_global_size(0) * get_global_size(1);
+    //const size_t global_id = get_global_id(1)*get_global_size(0) + get_global_id(0);
 
 #if 1
     const int2 back_limit = {max(gid.x - WINDOW_SIZE_HALF, 0),

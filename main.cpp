@@ -173,7 +173,7 @@ int main(int argc, char** argv) {
     options = ss.str();
 
     cout << "Starting kernel build with options: " << options << endl;
-    CL_CHECK(clBuildProgram(program, 0, NULL, options.c_str(), NULL, NULL));
+    error = clBuildProgram(program, 0, NULL, options.c_str(), NULL, NULL);
 
     size_t log_size;
     CL_CHECK(clGetProgramBuildInfo(program, device, CL_PROGRAM_BUILD_LOG, 0, NULL, &log_size));
@@ -184,6 +184,8 @@ int main(int argc, char** argv) {
     CL_CHECK(clGetProgramBuildInfo(program, device, CL_PROGRAM_BUILD_LOG, log_size + 1, log, NULL));
 
     cout << endl << "----Kernel build log----" << endl << log << endl << "----Kernel build end----" << endl << endl;
+
+    CL_CHECK(error); // Check clBuildProgram after printing build log
 
     cl_kernel dist_kernel = clCreateKernel(program, "calc_distances", &error);
     CL_CHECK(error);

@@ -34,6 +34,9 @@ add_definitions(-DUSE_PLATFORM=PLATFORM_NVIDIA)
 
 file(COPY
     bm3d.cl
+    config.h
+    dct.h
+    haar.h
     kuppi256.pgm
     kuppi256_25.pgm
     DESTINATION ${CMAKE_BINARY_DIR})
