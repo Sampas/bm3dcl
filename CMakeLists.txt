@@ -7,6 +7,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/runtime)
 find_package(OpenCL)
 
 add_executable(bm3dcl
+    res/bm3d.cl
     src/config.h
     src/dct.h
     src/haar.h
@@ -46,4 +47,7 @@ else()
         configure_file(${resource} "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}" COPYONLY)
     endforeach()
 endif()
+
+add_subdirectory(googletest-download)
+add_subdirectory(test)
 
