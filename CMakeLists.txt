@@ -33,6 +33,7 @@ set(resources
     res/kuppi256_25.pgm
 )
 
+file(MAKE_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
 if (DEFINED CMAKE_CONFIGURATION_TYPES)
     foreach(cfg ${CMAKE_CONFIGURATION_TYPES})
         foreach(resource ${resources})
@@ -41,5 +42,8 @@ if (DEFINED CMAKE_CONFIGURATION_TYPES)
         endforeach()
     endforeach()
 else()
+    foreach(resource ${resources})
+        configure_file(${resource} "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}" COPYONLY)
+    endforeach()
 endif()
 
